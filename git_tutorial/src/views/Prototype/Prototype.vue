@@ -3,6 +3,7 @@
     <h2 class="section__title">git init</h2>
     <div>
       <p>git init: 본사에서 로봇 설계도를 저장하기 시작하는 것</p>
+      <GitInitAnimation />
     </div>
     <h2 class="section__title">git add</h2>
     <div>
@@ -33,11 +34,13 @@
 </template>
 
 <script>
+import GitInitAnimation from "@/views/Prototype/GitInitAnimation";
 import GitAddAnimation from "@/views/Prototype/GitAddAnimation";
 
 export default {
   // name: Prototype,
   components: {
+    GitInitAnimation,
     GitAddAnimation
   }
 };
