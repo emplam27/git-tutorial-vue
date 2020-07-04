@@ -9,6 +9,9 @@
       <button @click="GIT">실행하기</button>
       <br>
       <br>
+      <h1>대충 설명하자면 키워드마다 끊어서 입력하게 해서 케이스 분류를 해주면 될꺼같습니다</h1>
+      <br>
+      <br>
       <label for="">git</label>
       <input v-model="orders.order1" type="text">
       <input v-model="orders.order2" type="text">
