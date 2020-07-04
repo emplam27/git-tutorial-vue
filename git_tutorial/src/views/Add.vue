@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <!-- <img class="github2" src="https://miro.medium.com/max/636/1*1OKmA2EdGln8O6RCVORgGg.png" alt=""> -->
-    <div class="factory">
- 
+    <div class="factory" :class="{move:isMove}" @click="Move">
+      <div class="box"></div>
     </div>
    
 
@@ -18,7 +18,7 @@ export default {
   name:'Add',
   data() {
     return {
-
+      isMove: false
     }
   },
   components: {
@@ -27,8 +27,8 @@ export default {
   method: {
 
 
-    move() {
-
+    Move() {
+      this.isMove = true
     }
 
   }
@@ -66,11 +66,20 @@ export default {
     background-color: white;
     border: 1;
     border-color: black;
+    transition: ease-in-out;
+    transform: translate(0,0);
+
   }
-  .github2 {
-    width: 10vh;
-    height: 10vh;
-    position: absolute;
-    
+
+  .box {
+    width: 5vh;
+    height: 5vh;
+    background-color: red;
   }
+  .move {
+    transition: ease-in-out;
+    transform: translate(100%,0);
+  }
+
+
 </style>

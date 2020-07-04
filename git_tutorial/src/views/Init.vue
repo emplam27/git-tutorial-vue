@@ -1,12 +1,23 @@
 <template>
   <div class="">
-      <button @click="CreateRepo">Init 하기</button>
+      <button @click="Coding">뚝딱뚝딱 코딩하기</button>
       <br>
-      <input v-model="name" type="text">
+      <br>
+      <input v-model="CodeText" type="text">
+      <br>
+      <br>
+      <button @click="GIT">실행하기</button>
+      <br>
+      <br>
+      <label for="">git</label>
+      <input v-model="orders.order1" type="text">
+      <input v-model="orders.order2" type="text">
+      <input v-model="orders.order3" type="text">
+      <input v-model="orders.order4" type="text">
+      <input v-model="orders.order5" type="text">
       <div class="container" > 
-        <br> 
         <div class="wrap">
-          <div  class="wrap-image"><img class="github" src="https://miro.medium.com/max/636/1*1OKmA2EdGln8O6RCVORgGg.png" alt=""></div>  
+
         </div>   
       </div>
 
@@ -22,34 +33,110 @@ export default {
   name:'Init',
   data() {
     return {
-        name:'',
-        ImgDir:"@/assets/github.png",
-        list: [],
-        count:1,
+        IsInit:false,
+        CodeText:'',
+        orders:{
+          order1:'',
+          order2:'',
+          order3:'',
+          order4:'',
+          order5:'',
+
+        },
+        
+        Repo: {
+          master:{commit: [], data:[]},
+
+        },
+        Middle: [
+
+        ],
+        Local: [
+
+        ],
+
+        BranchCnt:0,
+
     }
   },
   components: {
 
   },
   methods: {
+    Coding() {
+      const CodeText = this.CodeText
+      const Local = this.Local
+      
+      const Div =  document.createElement('div')
+      const DivBox = document.createElement('div')
+      const ContainerTag = document.querySelector('.container')
+      const CodeName =  document.createTextNode(this.CodeText)  
+
+      Div.setAttribute('class','coding-boxs')
+      DivBox.setAttribute('class','coding-box')
+
+     
+      Local.push(CodeText)
+
+      DivBox.appendChild(CodeName)
+      Div.appendChild(DivBox)
+      ContainerTag.appendChild(Div)
 
 
-    CreateRepo() {
-        console.log('오긴오냐')
+
+    },
+    GIT() {
+      const orders = this.orders
+      console.log(this.order1)
+      if (orders.order1 === 'init' & orders.order2 === '' & orders.order3 === '' & orders.order4 === '' & orders.order5 === '' & this.IsInit === false) {
+        
+        this.IsInit = true
         const Div =  document.createElement('div')
-        const Name =  document.createTextNode(this.name)   
+        const Name =  document.createTextNode(`지역저장소`)   
         const wrapTag = document.querySelector('.wrap')
-        const NewRepo = document.createElement('img')
+        const LocalRepo = document.createElement('img')
         const BranchName = document.createElement('h1')
         BranchName.appendChild(Name)
 
-        NewRepo.setAttribute("class","github")
-        NewRepo.setAttribute("src","https://miro.medium.com/max/636/1*1OKmA2EdGln8O6RCVORgGg.png")
+        LocalRepo.setAttribute("class","github")
+        LocalRepo.setAttribute("src","https://miro.medium.com/max/636/1*1OKmA2EdGln8O6RCVORgGg.png")
         
 
-        Div.appendChild(NewRepo)
+        Div.appendChild(LocalRepo)
         Div.appendChild(BranchName)
         wrapTag.appendChild(Div)
+
+        } else if (orders.order1 === 'add' & orders.order2 === '.' & orders.order3 === '' & orders.order4 === '' & orders.order5 === '' & this.IsInit ) {
+     
+          const Local = this.Local
+ 
+          if (Local.length > 0) {
+            // push 전 중간 저장지점
+            this.Middle = Local
+            console.log(this.Middle)
+          } else {
+            console.log('아무런 변화가 없어')
+          }
+          
+        } else if (orders.order1 === 'commit' & orders.order2 === '-m' & orders.order3.length > 0 & orders.order4 === '' & orders.order5 === ''  & this.IsInit & this.Middle.length > 0) {
+          const Repo = this.Repo
+          console.log(orders.order3)
+          Repo.master.commit.push(orders.order3)
+          console.log(Repo.master.commit)
+        } else if (orders.order1 === 'push' & orders.order2 === 'origin' & orders.order3.length > 0 & orders.order4 === '' & orders.order5 === ''  & this.IsInit & this.Middle.length > 0) {
+            const Repo = this.Repo
+            
+            Repo.master.data.push(this.Middle)
+            this.Middle = []
+            console.log(Repo)
+            
+
+        } else {
+          console.log('test')
+          console.log(this.Init)
+          console.log(this.Middle.length)
+        }
+          
 
     },
 
@@ -58,7 +145,7 @@ export default {
 
   },
   created() {
-    this.count = 1
+    
   }
 }
 </script>
@@ -111,19 +198,16 @@ export default {
 
 
 
-
-
-
 .wrap {
   display: flex;
   justify-content: center;
 }
 
-.wrap-img  {
-  
-}
-.wrap-text {
- 
-}
+.coding-box {
+    width: 5vh;
+    height: 5vh;
+    background-color: red;
+  }
+
 
 </style>

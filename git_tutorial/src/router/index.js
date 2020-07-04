@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Test from '../views/Test.vue'
+
 import Init from '../views/Init.vue'
 import Add from '../views/Add.vue'
 import Commit from '../views/Commit.vue'
@@ -15,11 +15,7 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home
   },
-  {
-    path: '/Test',
-    name: 'Test',
-    component: Test
-  },
+
   {
     path: '/init',
     name: 'Init',
