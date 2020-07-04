@@ -92,25 +92,26 @@ export default {
       const orders = this.orders
       console.log(this.order1)
       if (orders.order1 === 'init' & orders.order2 === '' & orders.order3 === '' & orders.order4 === '' & orders.order5 === '' & this.IsInit === false) {
-        
+        //git init
+        // this.IsInit으로 init 시점이후는 이 함수가 true일 때 만 실행하도록
         this.IsInit = true
         const Div =  document.createElement('div')
         const Name =  document.createTextNode(`지역저장소`)   
         const wrapTag = document.querySelector('.wrap')
-        const LocalRepo = document.createElement('img')
+        const LocalRepoImg = document.createElement('img')
         const BranchName = document.createElement('h1')
         BranchName.appendChild(Name)
 
-        LocalRepo.setAttribute("class","github")
-        LocalRepo.setAttribute("src","https://miro.medium.com/max/636/1*1OKmA2EdGln8O6RCVORgGg.png")
+        LocalRepoImg.setAttribute("class","github")
+        LocalRepoImg.setAttribute("src","https://miro.medium.com/max/636/1*1OKmA2EdGln8O6RCVORgGg.png")
         
 
-        Div.appendChild(LocalRepo)
+        Div.appendChild(LocalRepoImg)
         Div.appendChild(BranchName)
         wrapTag.appendChild(Div)
 
         } else if (orders.order1 === 'add' & orders.order2 === '.' & orders.order3 === '' & orders.order4 === '' & orders.order5 === '' & this.IsInit ) {
-     
+          // git add .
           const Local = this.Local
  
           if (Local.length > 0) {
@@ -122,6 +123,8 @@ export default {
           }
           
         } else if (orders.order1 === 'commit' & orders.order2 === '-m' & orders.order3.length > 0 & orders.order4 === '' & orders.order5 === ''  & this.IsInit & this.Middle.length > 0) {
+          // git commit -m
+          // add 이후 Middle 지점에 담은게 없으면 Commit 부터 실행안되도록 해야함
           const Repo = this.Repo
           console.log(orders.order3)
           Repo.master.commit.push(orders.order3)
@@ -129,7 +132,10 @@ export default {
         } else if (orders.order1 === 'push' & orders.order2 === 'origin' & orders.order3.length > 0 & orders.order4 === '' & orders.order5 === ''  & this.IsInit & this.Middle.length > 0) {
             const Repo = this.Repo
             
+            /// git push origin master
+            // 이 지점에서 branch 상황에서 어떻게 처리할지 고민해야함
             Repo.master.data.push(this.Middle)
+            // push를 했으니 Middle를 싹 비워주고 시작해야함
             this.Middle = []
             console.log(Repo)
             
