@@ -134,10 +134,10 @@ export default {
             
             /// git push origin master
             // 이 지점에서 branch 상황에서 어떻게 처리할지 고민해야함
-            Repo.master.data.push(this.Middle)
+            Repo[`${orders.order3}`].data.push(this.Middle)
             // push를 했으니 Middle를 싹 비워주고 시작해야함
             this.Middle = []
-            console.log(Repo)
+            console.log(Repo[`${orders.order3}`])
             
 
         } else {
