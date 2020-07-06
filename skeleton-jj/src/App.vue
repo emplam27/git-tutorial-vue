@@ -40,9 +40,9 @@ export default {
 #nav {
   position: fixed;
   float: left;
-  top: 0;
+  top: 20%;
   bottom: 0;
-  right: 0;
+  right: 5%;
 }
 .nav-bar {
   display: flex;
@@ -57,5 +57,8 @@ export default {
   line-height: 100px;
   background-color: cornflowerblue;
   border: 1px solid grey
+}
+#app {
+  height: 10000px;
 }
 </style>
