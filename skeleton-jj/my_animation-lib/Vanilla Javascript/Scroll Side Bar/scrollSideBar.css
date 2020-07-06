@@ -1,0 +1,29 @@
+body {
+  height: 3000px;
+}
+
+#nav {
+  position:fixed; _position:absolute; _z-index:-1;
+  width:170px;
+  overflow:hidden;
+  left:0px; 
+  top:60px;
+  background-color: transparent;
+  margin:0;
+  padding:0;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  list-style:none;
+  padding-left:0px;
+  text-align: center;
+}
+.nav-list {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background-color: cornflowerblue;
+  border: 1px solid grey
+}
