@@ -40,9 +40,28 @@
 #### **업무 분담**
 
 - 시나리오 짜기(스토리, 캐릭터, 동선 등등) - **용욱, 용원, 다인**
-
 - 애니메이션 라이브러리, **설명, 옵션 정리(마크다운)** - **도희, 종준**
-
 - **Vuex로 local storage에 저장함**
 
-  
+
+
+
+
+### 2020. 07. 12.(일)
+
+- Description을 요약 => git 정의 문장 + 비유 문장  위아래로 
+- CSS 애니메이션 동선 
+  - 동선(객체부터 객체까지 등등), 시점, 시간, 
+  - 당장은 디자인 하지말고 박스로 만들어서 애니메이션 작동만 하도록 프로토타입 단계까지만
+- 자바스크립트 logic 차근차근 짜기 (세션 유지 or Local Storage)
+
+- 업무 분담
+
+  1. Gitignore, config, init, add(Stage 상태), remote add, status, log (용욱)
+  2. Push, Pull, Clone(다인)
+  3. Branch, Checkout, Merge, fetch(용원)
+
+  4. 자바스크립트 로직(용원)
+
+
+
